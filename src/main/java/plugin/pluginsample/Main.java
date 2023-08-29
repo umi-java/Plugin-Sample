@@ -2,8 +2,6 @@ package plugin.pluginsample;
 
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -25,7 +23,9 @@ public final class Main extends JavaPlugin implements Listener {
   @Override
   public void onEnable() {
     Bukkit.getPluginManager().registerEvents(this, this);
+    getCommand("levelup").setExecutor(new LevelUpCommand());
   }
+
 
   private int count;
   /**
@@ -64,9 +64,7 @@ public final class Main extends JavaPlugin implements Listener {
       firework.setFireworkMeta(fireworkMeta);
       }
 
-      Path path = Path.of("firework.txt");
-      Files.writeString(path, "たーまやーー");
-      player.sendMessage(Files.readString(path));
+
     }
     count++;
   }
