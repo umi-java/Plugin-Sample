@@ -7,9 +7,11 @@ import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.FireworkEffect.Type;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Rabbit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -26,6 +28,16 @@ public final class Main extends JavaPlugin implements Listener {
     Bukkit.getPluginManager().registerEvents(this, this);
     getCommand("setLevel").setExecutor(new setLevelCommand(this));
     getCommand("allSetLevel").setExecutor(new AllSetLevelCommand());
+  }
+
+  @EventHandler
+  public void onPlayerJoin(PlayerJoinEvent e){
+    Player player = e.getPlayer();
+    World world = player.getWorld();
+    Location playerlocation = player.getLocation();
+
+    world.spawn(new Location(world, playerlocation.getX()+3, playerlocation.getY(), playerlocation.getZ()), Rabbit.class);
+
   }
 
 
