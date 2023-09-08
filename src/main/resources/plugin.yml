@@ -3,4 +3,5 @@ version: '${version}'
 main: plugin.pluginsample.Main
 api-version: '1.20'
 commands:
-  levelup:
+  setLevel:
+  allSetLevel:

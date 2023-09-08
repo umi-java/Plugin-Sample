@@ -1,6 +1,5 @@
 package plugin.pluginsample;
 
-
 import java.io.IOException;
 import java.util.List;
 import org.bukkit.Bukkit;
@@ -22,8 +21,11 @@ public final class Main extends JavaPlugin implements Listener {
 
   @Override
   public void onEnable() {
+    saveDefaultConfig();
+
     Bukkit.getPluginManager().registerEvents(this, this);
-    getCommand("levelup").setExecutor(new LevelUpCommand());
+    getCommand("setLevel").setExecutor(new setLevelCommand(this));
+    getCommand("allSetLevel").setExecutor(new AllSetLevelCommand());
   }
 
 

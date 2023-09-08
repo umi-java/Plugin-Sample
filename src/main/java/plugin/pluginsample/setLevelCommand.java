@@ -5,13 +5,23 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class LevelUpCommand implements CommandExecutor {
+public class setLevelCommand implements CommandExecutor {
 
+  private Main main;
+
+  public setLevelCommand(Main main) {
+    this.main = main;
+  }
 
   @Override
   public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
     if(sender instanceof Player player){
-      player.setLevel(30);
+      if(args.length == 1){
+        player.setLevel(Integer.parseInt(args[0]));
+      } else {
+        player.sendMessage(main.getConfig().getString("Message"));
+      }
+
     }
     return false;
   }
